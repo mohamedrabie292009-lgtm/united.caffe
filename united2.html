@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>يونايتد كافيه | United Caffeine & Dessert House</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&family=Cinzel:wght@700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <style>
+    :root {
+      --primary: #c59d5f;
+      --primary-dark: #a17838;
+      --burgundy: #5c141d;
+      --dark-bg: #141113;
+      --card-bg: #1c171a;
+      --card-border: rgba(197, 157, 95, 0.25);
+      --text-main: #f5f5f5;
+      --text-muted: #b5a8a8;
+      --transition: all 0.3s ease;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Cairo', sans-serif; }
+    body { background-color: var(--dark-bg); color: var(--text-main); line-height: 1.6; padding-bottom: 80px; }
+
+    /* Header */
+    header {
+      position: sticky; top: 0; z-index: 1000;
+      background: rgba(20, 17, 19, 0.95);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--card-border);
+    }
+    nav {
+      max-width: 1200px; margin: 0 auto;
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 0.8rem 1.5rem;
+    }
+    .brand { text-decoration: none; display: flex; flex-direction: column; }
+    .brand .title { font-family: 'Cinzel', serif; font-size: 1.6rem; color: var(--primary); font-weight: 700; letter-spacing: 2px; }
+    .brand .sub { font-size: 0.7rem; color: #dfcdb5; letter-spacing: 1px; }
+
+    .nav-links { display: flex; gap: 1.5rem; list-style: none; }
+    .nav-links a { color: var(--text-main); text-decoration: none; font-weight: 600; transition: var(--transition); }
+    .nav-links a:hover { color: var(--primary); }
+
+    .btn {
+      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+      color: #111; padding: 0.6rem 1.3rem; border-radius: 25px;
+      font-weight: 700; text-decoration: none; border: none; cursor: pointer;
+      display: inline-flex; align-items: center; gap: 8px; transition: var(--transition);
+    }
+    .btn:hover { transform: translateY(-2px); box-shadow: 0 4px 15px rgba(197, 157, 95, 0.3); }
+
+    /* Hero */
+    .hero {
+      text-align: center; padding: 5rem 1.5rem 3.5rem;
+      background: linear-gradient(rgba(20, 17, 19, 0.85), rgba(92, 20, 29, 0.7)),
+                  url('https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat;
+    }
+    .hero h1 { font-size: 2.8rem; margin-bottom: 1rem; color: #fff; font-weight: 900; }
+    .hero h1 span { color: var(--primary); }
+    .hero p { font-size: 1.15rem; color: #e4d8d8; max-width: 700px; margin: 0 auto 2rem; }
+
+    /* Sections */
+    section { padding: 4rem 1.5rem; max-width: 1200px; margin: 0 auto; }
+    .section-title { text-align: center; margin-bottom: 2.5rem; }
+    .section-title h2 { font-size: 2.2rem; color: var(--primary); font-weight: 800; margin-bottom: 6px; }
+    .section-title p { color: var(--text-muted); }
+
+    /* Menu Tabs */
+    .category-tabs {
+      display: flex; justify-content: center; gap: 10px; margin-bottom: 2.5rem; flex-wrap: wrap;
+    }
+    .cat-btn {
+      background: var(--card-bg); border: 1px solid var(--card-border);
+      color: var(--text-main); padding: 0.5rem 1.3rem; border-radius: 25px;
+      cursor: pointer; font-weight: 600; transition: var(--transition);
+    }
+    .cat-btn.active, .cat-btn:hover { background: var(--primary); color: #111; border-color: var(--primary); }
+
+    /* Menu Grid */
+    .menu-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; }
+    .menu-card {
+      background: var(--card-bg); border-radius: 14px; overflow: hidden;
+      border: 1px solid var(--card-border); display: flex; flex-direction: column;
+      justify-content: space-between; padding: 1.2rem; transition: var(--transition);
+    }
+    .menu-card:hover { transform: translateY(-4px); border-color: var(--primary); }
+    .item-top { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 8px; }
+    .item-name { font-size: 1.1rem; font-weight: 700; color: #fff; }
+    .item-price { color: var(--primary); font-weight: 800; font-size: 1.15rem; }
+    .item-desc { color: var(--text-muted); font-size: 0.88rem; margin-bottom: 1.2rem; }
+
+    .add-btn {
+      background: rgba(197, 157, 95, 0.15); border: 1px solid var(--primary);
+      color: var(--primary); padding: 0.5rem; border-radius: 8px;
+      font-weight: 700; cursor: pointer; width: 100%; display: flex;
+      align-items: center; justify-content: center; gap: 6px; transition: var(--transition);
+    }
+    .add-btn:hover { background: var(--primary); color: #111; }
+
+    /* Gallery Section */
+    .gallery-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem;
+    }
+    .gallery-box {
+      border-radius: 12px; overflow: hidden; height: 220px; position: relative;
+      border: 1px solid var(--card-border);
+    }
+    .gallery-box img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s ease; }
+    .gallery-box:hover img { transform: scale(1.08); }
+    .gallery-label {
+      position: absolute; bottom: 0; inset-inline: 0;
+      background: linear-gradient(transparent, rgba(0,0,0,0.85));
+      padding: 10px; font-size: 0.9rem; font-weight: bold; color: #fff; text-align: center;
+    }
+
+    /* Cart Bar */
+    .cart-bar {
+      position: fixed; bottom: 15px; left: 50%; transform: translateX(-50%);
+      background: #1f181c; border: 2px solid var(--primary);
+      border-radius: 40px; padding: 0.6rem 1.5rem; display: flex;
+      align-items: center; justify-content: space-between; gap: 1.5rem;
+      width: 90%; max-width: 480px; z-index: 1500; box-shadow: 0 8px 25px rgba(0,0,0,0.8);
+    }
+
+    /* Modal */
+    .modal {
+      display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.85);
+      z-index: 2000; align-items: center; justify-content: center; padding: 1rem;
+    }
+    .modal.active { display: flex; }
+    .modal-box {
+      background: var(--card-bg); border: 1px solid var(--card-border);
+      border-radius: 16px; max-width: 480px; width: 100%; padding: 1.8rem;
+      max-height: 90vh; overflow-y: auto; position: relative;
+    }
+    .close-modal { position: absolute; top: 15px; left: 20px; font-size: 1.6rem; cursor: pointer; color: var(--text-muted); }
+
+    .cart-list { max-height: 150px; overflow-y: auto; border-bottom: 1px dashed rgba(255,255,255,0.15); margin-bottom: 1rem; padding-bottom: 0.5rem; }
+    .cart-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; font-size: 0.9rem; }
+    .qty-ctrl { display: flex; align-items: center; gap: 6px; }
+    .qty-btn { background: #2b2226; border: 1px solid var(--primary); color: var(--primary); width: 22px; height: 22px; border-radius: 4px; cursor: pointer; }
+
+    .input-group { margin-bottom: 0.8rem; }
+    .input-group label { display: block; font-size: 0.82rem; margin-bottom: 4px; color: #ccc; }
+    .input-group input, .input-group select, .input-group textarea {
+      width: 100%; padding: 0.65rem 0.8rem; background: #130f11;
+      border: 1px solid rgba(197, 157, 95, 0.3); border-radius: 8px; color: #fff; font-size: 0.9rem;
+    }
+
+    /* Branch Box */
+    .branch-card {
+      background: var(--card-bg); border-radius: 12px; padding: 1.2rem;
+      border-right: 4px solid var(--primary); border: 1px solid var(--card-border);
+    }
+    .branch-card h4 { color: var(--primary); margin-bottom: 6px; }
+
+    footer { text-align: center; padding: 2rem; border-top: 1px solid var(--card-border); color: var(--text-muted); font-size: 0.85rem; }
+
+    @media (max-width: 768px) {
+      .hero h1 { font-size: 2.1rem; }
+      .nav-links { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <header>
+    <nav>
+      <a href="#" class="brand">
+        <span class="title">UNITED</span>
+        <span class="sub">CAFFEINE & DESSERT HOUSE</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="#menu">قائمة المنيو</a></li>
+        <li><a href="#gallery">معرض الصور 📸</a></li>
+        <li><a href="#branches">الفروع والموقع</a></li>
+      </ul>
+      <button onclick="openModal()" class="btn"><i class="fas fa-shopping-bag"></i> سلة الطلب</button>
+    </nav>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero">
+    <h1>ملوك الديسيرت والروقان في <span>سمنود</span> ☕✨</h1>
+    <p>تذوق أشهى أصناف الوافل، الكريب، التشيز كيك والقهوة المختصة من يونايتد كافيه.</p>
+    <a href="#menu" class="btn"><i class="fas fa-utensils"></i> استعراض كامل المنيو</a>
+  </section>
+
+  <!-- Menu Section -->
+  <section id="menu">
+    <div class="section-title">
+      <h2>قائمة الطعام والمشروبات كاملة</h2>
+      <p>اختر ما يعجبك واضغط إضافة للطلب</p>
+    </div>
+
+    <!-- Category Tabs -->
+    <div class="category-tabs">
+      <button class="cat-btn active" onclick="filterMenu('all')">الكل</button>
+      <button class="cat-btn" onclick="filterMenu('waffle')">وافل ودوناتس</button>
+      <button class="cat-btn" onclick="filterMenu('crepe')">كريب حلو</button>
+      <button class="cat-btn" onclick="filterMenu('dessert')">كاسات وتشيز كيك</button>
+      <button class="cat-btn" onclick="filterMenu('coffee')">قهوة وإسبريسو</button>
+      <button class="cat-btn" onclick="filterMenu('drinks')">ميلك شيك وعصائر</button>
+    </div>
+
+    <!-- Menu Items -->
+    <div class="menu-grid" id="menuItems">
+      <!-- الأصناف تُعرض ديناميكياً بواسطة جافا سكريبت بالأسعار الكاملة -->
+    </div>
+  </section>
+
+  <!-- Gallery Section -->
+  <section id="gallery" style="border-top: 1px solid var(--card-border);">
+    <div class="section-title">
+      <h2>معرض صور الحلويات والأجواء 📸</h2>
+      <p>لقطات حقيقية من داخل يونايتد كافيه</p>
+    </div>
+
+    <div class="gallery-grid">
+      <div class="gallery-box">
+        <img src="https://images.unsplash.com/photo-1519676867240-f03562e64548?auto=format&fit=crop&w=600&q=80" alt="كريب يونايتد">
+        <div class="gallery-label">كريب سبيشال غرقان صوص كراميل وشوكولا</div>
+      </div>
+      <div class="gallery-box">
+        <img src="https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?auto=format&fit=crop&w=600&q=80" alt="بان كيك">
+        <div class="gallery-label">ميني بان كيك بالسوس والمكسرات</div>
+      </div>
+      <div class="gallery-box">
+        <img src="https://images.unsplash.com/photo-1533134242443-d4fd215305ad?auto=format&fit=crop&w=600&q=80" alt="تشيز كيك">
+        <div class="gallery-label">تشيز كيك لوتس وبلوبيري مع آيس ميلك شيك</div>
+      </div>
+      <div class="gallery-box">
+        <img src="https://images.unsplash.com/photo-1562376552-0d160a2f238d?auto=format&fit=crop&w=600&q=80" alt="وافل">
+        <div class="gallery-label">وافل مقرمش مع بولات الآيس كريم الفاخرة</div>
+      </div>
+      <div class="gallery-box">
+        <img src="https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?auto=format&fit=crop&w=600&q=80" alt="قهوة">
+        <div class="gallery-label">ركن القهوة المختصة والإسبريسو المضبوط</div>
+      </div>
+      <div class="gallery-box">
+        <img src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&w=600&q=80" alt="المكان">
+        <div class="gallery-label">أجواء كافيه يونايتد الدافئة - قعدات مريحة</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Branches -->
+  <section id="branches" style="border-top: 1px solid var(--card-border);">
+    <div class="section-title">
+      <h2>فروع كافيه يونايتد - سمنود</h2>
+      <p>جاهزون لخدمتكم يومياً داخل الكافيه ودليفري</p>
+    </div>
+
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem;">
+      <div class="branch-card">
+        <h4>📍 فرع شارع البحر (الرئيسي)</h4>
+        <p style="color: #ccc; margin-bottom: 6px;">بجوار مدرسة سمنود الثانوية بنين</p>
+        <p style="color: var(--primary); font-weight: bold;">📞 01274442465</p>
+      </div>
+
+      <div class="branch-card">
+        <h4>📍 فرع ترعة الساحل</h4>
+        <p style="color: #ccc; margin-bottom: 6px;">بجوار ورشة السلاموني - محلات شركة بدر</p>
+        <p style="color: var(--primary); font-weight: bold;">📞 01273543053</p>
+      </div>
+    </div>
+
+    <div style="text-align: center; margin-top: 2rem;">
+      <a href="https://maps.app.goo.gl/Gpgd7M5jm4tZSHDt7" target="_blank" class="btn" style="background: transparent; border: 1.5px solid var(--primary); color: var(--primary);">
+        <i class="fas fa-map-marked-alt"></i> فتح لوكيشن الكافيه على خرائط Google
+      </a>
+    </div>
+  </section>
+
+  <!-- Floating Cart Bar -->
+  <div class="cart-bar" id="cartBar" style="display: none;">
+    <div>
+      <span style="font-weight: bold; color: var(--primary); font-size: 1.1rem;" id="barCount">0</span> أصناف | 
+      المجموع: <span style="font-weight: bold; color: #fff;" id="barTotal">0</span> ج.م
+    </div>
+    <button class="btn" onclick="openModal()" style="padding: 0.4rem 1rem; font-size: 0.9rem;">
+      مراجعة الطلب <i class="fas fa-arrow-left"></i>
+    </button>
+  </div>
+
+  <!-- Modal Checkout -->
+  <div class="modal" id="orderModal">
+    <div class="modal-box">
+      <span class="close-modal" onclick="closeModal()">&times;</span>
+      <h3 style="color: var(--primary); margin-bottom: 1rem; text-align: center;">سلة طلباتك</h3>
+
+      <div class="cart-list" id="cartListContainer"></div>
+
+      <div style="display: flex; justify-content: space-between; font-weight: bold; margin-bottom: 1rem;">
+        <span>إجمالي الفاتورة:</span>
+        <span style="color: var(--primary); font-size: 1.2rem;" id="modalTotalPrice">0 ج.م</span>
+      </div>
+
+      <form id="orderForm" onsubmit="submitOrder(event)">
+        <div class="input-group">
+          <label>الفرع الأقرب لك:</label>
+          <select id="branchPhone" required>
+            <option value="01274442465">فرع شارع البحر (01274442465)</option>
+            <option value="01273543053">فرع ترعة الساحل (01273543053)</option>
+          </select>
+        </div>
+
+        <div class="input-group">
+          <label>الاسم بالكامل:</label>
+          <input type="text" id="custName" placeholder="اكتب اسمك" required />
+        </div>
+
+        <div class="input-group">
+          <label>رقم هاتفك:</label>
+          <input type="tel" id="custPhone" placeholder="رقم هاتفك للتواصل" required />
+        </div>
+
+        <div class="input-group">
+          <label>طريقة الاستلام:</label>
+          <select id="orderType" onchange="toggleAddress(this.value)">
+            <option value="دليفري (توصيل للمنزل)">دليفري (توصيل للمنزل)</option>
+            <option value="تيك أواي (استلام من الفرع)">تيك أواي (استلام من الفرع)</option>
+            <option value="حجز طاولة بالكافيه">حجز طاولة داخل الكافيه</option>
+          </select>
+        </div>
+
+        <div class="input-group" id="addressField">
+          <label>العنوان بالتفصيل:</label>
+          <input type="text" id="custAddress" placeholder="المنطقة، اسم الشارع، رقم البيت" />
+        </div>
+
+        <div class="input-group">
+          <label>ملاحظات على الطلب:</label>
+          <textarea id="custNotes" rows="2" placeholder="أي إضافات أو تفاصيل خاصة"></textarea>
+        </div>
+
+        <button type="submit" class="btn" style="width: 100%; justify-content: center; padding: 0.8rem; font-size: 1rem;">
+          <i class="fas fa-check-circle"></i> تأكيد الطلب فوراً
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <footer>
+    <p>جميع الحقوق محفوظة &copy; 2026 - كافيه <strong>United Caffeine & Dessert House</strong></p>
+  </footer>
+
+  <script>
+    // قائمة المنيو الكاملة الخاصة بـ United
+    const menuData = [
+      // وافل ودوناتس
+      { id: 1, cat: 'waffle', name: 'وافل لوتس & آيس كريم', price: 85, desc: 'وافل بلجيكي مقرمش مع زبدة لوتس أصلية وبسكوت مطحون وبولة آيس كريم' },
+      { id: 2, cat: 'waffle', name: 'وافل نوتيلا ميكس فواكه', price: 85, desc: 'وافل غرقان نوتيلا مع قطع موز وفراولة طازجة وبولة فانيليا' },
+      { id: 3, cat: 'waffle', name: 'وافل بستاشيو ملكي', price: 95, desc: 'صوص الفستق الإيطالي المميز مع مكسرات كرانشي' },
+      { id: 4, cat: 'waffle', name: 'دوناتس محشية نوتيلا وكيندر', price: 50, desc: 'دونات هشة وطازجة محشوة شوكولاتة ومرشوشة بسكر بودرة' },
+
+      // كريب
+      { id: 5, cat: 'crepe', name: 'كريب كلاسيك نوتيلا وموز', price: 75, desc: 'رول كريب طري محشو نوتيلا وشرائح موز مع صوص شوكولا' },
+      { id: 6, cat: 'crepe', name: 'كريب فستق وشوكولاتة بيضاء', price: 90, desc: 'مزيج البستاشيو الغني مع صوص الشوكولاتة البيضاء الساخن' },
+      { id: 7, cat: 'crepe', name: 'كريب مكس كندر ومارشميلو', price: 85, desc: 'محشو قطع شوكولاتة كيندر ومارشميلو ذائب' },
+
+      // ديسيرت وتشيز كيك
+      { id: 8, cat: 'dessert', name: 'كاسات سنيكرز كرانشي', price: 75, desc: 'طبقات كيك الشوكولا وصوص الكراميل مع قطع سنيكرز وفول سوداني' },
+      { id: 9, cat: 'dessert', name: 'تشيز كيك بلوبيري نيويورك', price: 65, desc: 'تشيز كيك غني مغطى بصوص التوت البري الفاخر' },
+      { id: 10, cat: 'dessert', name: 'تشيز كيك لوتس كرانش', price: 70, desc: 'طبقات الجبن الكريمي مع زبدة وبسكويت اللوتس الأصلي' },
+      { id: 11, cat: 'dessert', name: 'ميني بان كيك 12 قطعة سوسات', price: 70, desc: 'قطع ميني بان كيك مغطاة بشوكولاتة حليب ووايت صوص' },
+
+      // قهوة وإسبريسو
+      { id: 12, cat: 'coffee', name: 'سبانش لاتيه (بارد / ساخن)', price: 55, desc: 'إسبريسو دبل شوت مع حليب مكثف محلى بمذاق معتدل' },
+      { id: 13, cat: 'coffee', name: 'كراميل ماكياتو', price: 55, desc: 'إسبريسو مع حليب مبخر وصوص كراميل دافئ' },
+      { id: 14, cat: 'coffee', name: 'قهوة تركي مخصوص (سادة / محوج)', price: 30, desc: 'بن تركي فاخر محضر على الرمالة' },
+      { id: 15, cat: 'coffee', name: 'إسبريسو دوبل (Double Espresso)', price: 35, desc: 'شوت إسبريسو نقي وقوي لضبط المزاج' },
+      { id: 16, cat: 'coffee', name: 'كافيه موكا شوكولاتة', price: 50, desc: 'إسبريسو ممزوج بشوكولاتة غنية وكريمة مخفوقة' },
+
+      // مشروبات وميلك شيك
+      { id: 17, cat: 'drinks', name: 'ميلك شيك نوتيلا وبراونيز', price: 65, desc: 'ميلك شيك آيس كريم شوكولا مع قطع كيك براونيز' },
+      { id: 18, cat: 'drinks', name: 'ميلك شيك لوتس فانيلا', price: 65, desc: 'آيس كريم فانيليا مخلوط بصوص لوتس وبسكويت مقرمش' },
+      { id: 19, cat: 'drinks', name: 'موهيتو بلوبيري / باشن فروت', price: 45, desc: 'صودا منعشة مع صوص الفاكهة والنعناع الطازج والليمون' },
+      { id: 20, cat: 'drinks', name: 'عصير فريش (مانجو / فراولة / برتقال)', price: 40, desc: 'عصائر فواكه طبيعية طازجة 100%' }
+    ];
+
+    let cart = [];
+
+    // عرض الأصناف
+    function renderMenu(items) {
+      const container = document.getElementById('menuItems');
+      container.innerHTML = items.map(item => `
+        <div class="menu-card">
+          <div>
+            <div class="item-top">
+              <span class="item-name">${item.name}</span>
+              <span class="item-price">${item.price} ج.م</span>
+            </div>
+            <p class="item-desc">${item.desc}</p>
+          </div>
+          <button class="add-btn" onclick="addToCart(${item.id})">
+            <i class="fas fa-plus"></i> إضافة للطلب
+          </button>
+        </div>
+      `).join('');
+    }
+
+    // فلترة الأقسام
+    function filterMenu(cat) {
+      document.querySelectorAll('.cat-btn').forEach(b => b.classList.remove('active'));
+      event.target.classList.add('active');
+
+      if (cat === 'all') {
+        renderMenu(menuData);
+      } else {
+        renderMenu(menuData.filter(i => i.cat === cat));
+      }
+    }
+
+    // إدارة السلة
+    function addToCart(id) {
+      const item = menuData.find(i => i.id === id);
+      const inCart = cart.find(i => i.id === id);
+      if (inCart) {
+        inCart.qty++;
+      } else {
+        cart.push({ ...item, qty: 1 });
+      }
+      updateCart();
+    }
+
+    function changeQty(id, delta) {
+      const inCart = cart.find(i => i.id === id);
+      if (inCart) {
+        inCart.qty += delta;
+        if (inCart.qty <= 0) {
+          cart = cart.filter(i => i.id !== id);
+        }
+      }
+      updateCart();
+      renderCartRows();
+    }
+
+    function updateCart() {
+      const totalCount = cart.reduce((s, i) => s + i.qty, 0);
+      const totalPrice = cart.reduce((s, i) => s + (i.price * i.qty), 0);
+
+      document.getElementById('barCount').innerText = totalCount;
+      document.getElementById('barTotal').innerText = totalPrice;
+      document.getElementById('modalTotalPrice').innerText = totalPrice + " ج.م";
+
+      document.getElementById('cartBar').style.display = totalCount > 0 ? 'flex' : 'none';
+    }
+
+    function openModal() {
+      if (cart.length === 0) {
+        alert("سلتك فارغة! اختر بعض الأصناف أولاً.");
+        return;
+      }
+      renderCartRows();
+      document.getElementById('orderModal').classList.add('active');
+    }
+
+    function closeModal() {
+      document.getElementById('orderModal').classList.remove('active');
+    }
+
+    function renderCartRows() {
+      const container = document.getElementById('cartListContainer');
+      if (cart.length === 0) {
+        container.innerHTML = "<p style='text-align:center; color:#888;'>لا توجد أصناف في السلة</p>";
+        closeModal();
+        return;
+      }
+      container.innerHTML = cart.map(i => `
+        <div class="cart-row">
+          <div>
+            <strong>${i.name}</strong>
+            <div style="font-size:0.8rem; color:var(--primary);">${i.price} ج.م × ${i.qty} = ${i.price * i.qty} ج.م</div>
+          </div>
+          <div class="qty-ctrl">
+            <button type="button" class="qty-btn" onclick="changeQty(${i.id}, -1)">-</button>
+            <span>${i.qty}</span>
+            <button type="button" class="qty-btn" onclick="changeQty(${i.id}, 1)">+</button>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    function toggleAddress(type) {
+      document.getElementById('addressField').style.display = type.includes('توصيل') ? 'block' : 'none';
+    }
+
+    // تأكيد الطلب
+    function submitOrder(e) {
+      e.preventDefault();
+
+      const branch = document.getElementById('branchPhone').value;
+      const name = document.getElementById('custName').value;
+      const phone = document.getElementById('custPhone').value;
+      const type = document.getElementById('orderType').value;
+      const address = document.getElementById('custAddress').value || 'استلام بالفرع';
+      const notes = document.getElementById('custNotes').value || 'لا يوجد';
+      const total = cart.reduce((s, i) => s + (i.price * i.qty), 0);
+
+      let itemsTxt = "";
+      cart.forEach((i, idx) => {
+        itemsTxt += `${idx + 1}. *${i.name}* (عدد ${i.qty}) -> ${i.price * i.qty} ج.م%0A`;
+      });
+
+      const msg = 
+`☕ *طلب جديد - يونايتد كافيه* ☕%0A` +
+`-------------------------%0A` +
+`👤 *الاسم:* ${name}%0A` +
+`📱 *الموبايل:* ${phone}%0A` +
+`📌 *النوع:* ${type}%0A` +
+`📍 *العنوان:* ${address}%0A` +
+`📝 *ملاحظات:* ${notes}%0A` +
+`-------------------------%0A` +
+`🛒 *الأصناف:*%0A${itemsTxt}` +
+`-------------------------%0A` +
+`💰 *الإجمالي:* ${total} ج.م`;
+
+      // إشعار فوري وتجهيز الرسالة
+      alert("تم تسجيل وتأكيد طلبك بنجاح! سيتم الآن توجيه الطلب إلى رقم واتساب الفرع لتأكيد التجهيز فوراً.");
+      
+      const waUrl = `https://wa.me/20${branch.substring(1)}?text=${msg}`;
+      window.location.href = waUrl;
+    }
+
+    // تشغيل القائمة عند الفتح
+    renderMenu(menuData);
+  </script>
+</body>
+  </html>
