@@ -14,8 +14,8 @@
       --primary: #c59d5f;
       --primary-dark: #a17838;
       --burgundy: #5c141d;
-      --dark-bg: #141113;
-      --card-bg: #1c171a;
+      --dark-bg: #120e10;
+      --card-bg: #1b1518;
       --card-border: rgba(197, 157, 95, 0.25);
       --text-main: #f5f5f5;
       --text-muted: #b5a8a8;
@@ -23,12 +23,12 @@
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Cairo', sans-serif; }
-    body { background-color: var(--dark-bg); color: var(--text-main); line-height: 1.6; padding-bottom: 80px; }
+    body { background-color: var(--dark-bg); color: var(--text-main); line-height: 1.6; padding-bottom: 90px; }
 
     /* Header */
     header {
       position: sticky; top: 0; z-index: 1000;
-      background: rgba(20, 17, 19, 0.95);
+      background: rgba(18, 14, 16, 0.95);
       backdrop-filter: blur(10px);
       border-bottom: 1px solid var(--card-border);
     }
@@ -55,9 +55,10 @@
 
     /* Hero */
     .hero {
-      text-align: center; padding: 5rem 1.5rem 3.5rem;
-      background: linear-gradient(rgba(20, 17, 19, 0.85), rgba(92, 20, 29, 0.7)),
-                  url('https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat;
+      position: relative;
+      text-align: center; padding: 6rem 1.5rem 4rem;
+      background: linear-gradient(rgba(18, 14, 16, 0.85), rgba(92, 20, 29, 0.85)),
+                  url('https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat;
     }
     .hero h1 { font-size: 2.8rem; margin-bottom: 1rem; color: #fff; font-weight: 900; }
     .hero h1 span { color: var(--primary); }
@@ -69,21 +70,21 @@
     .section-title h2 { font-size: 2.2rem; color: var(--primary); font-weight: 800; margin-bottom: 6px; }
     .section-title p { color: var(--text-muted); }
 
-    /* Menu Tabs */
+    /* Menu Categories */
     .category-tabs {
       display: flex; justify-content: center; gap: 10px; margin-bottom: 2.5rem; flex-wrap: wrap;
     }
     .cat-btn {
       background: var(--card-bg); border: 1px solid var(--card-border);
-      color: var(--text-main); padding: 0.5rem 1.3rem; border-radius: 25px;
-      cursor: pointer; font-weight: 600; transition: var(--transition);
+      color: var(--text-main); padding: 0.5rem 1.2rem; border-radius: 25px;
+      cursor: pointer; font-weight: 600; transition: var(--transition); font-size: 0.95rem;
     }
     .cat-btn.active, .cat-btn:hover { background: var(--primary); color: #111; border-color: var(--primary); }
 
     /* Menu Grid */
-    .menu-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; }
+    .menu-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.4rem; }
     .menu-card {
-      background: var(--card-bg); border-radius: 14px; overflow: hidden;
+      background: var(--card-bg); border-radius: 12px;
       border: 1px solid var(--card-border); display: flex; flex-direction: column;
       justify-content: space-between; padding: 1.2rem; transition: var(--transition);
     }
@@ -91,42 +92,42 @@
     .item-top { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 8px; }
     .item-name { font-size: 1.1rem; font-weight: 700; color: #fff; }
     .item-price { color: var(--primary); font-weight: 800; font-size: 1.15rem; }
-    .item-desc { color: var(--text-muted); font-size: 0.88rem; margin-bottom: 1.2rem; }
+    .item-desc { color: var(--text-muted); font-size: 0.85rem; margin-bottom: 1.2rem; }
 
     .add-btn {
-      background: rgba(197, 157, 95, 0.15); border: 1px solid var(--primary);
+      background: rgba(197, 157, 95, 0.12); border: 1px solid var(--primary);
       color: var(--primary); padding: 0.5rem; border-radius: 8px;
       font-weight: 700; cursor: pointer; width: 100%; display: flex;
       align-items: center; justify-content: center; gap: 6px; transition: var(--transition);
     }
     .add-btn:hover { background: var(--primary); color: #111; }
 
-    /* Gallery Section */
+    /* Gallery */
     .gallery-grid {
-      display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem;
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.2rem;
     }
     .gallery-box {
-      border-radius: 12px; overflow: hidden; height: 220px; position: relative;
+      border-radius: 12px; overflow: hidden; height: 260px; position: relative;
       border: 1px solid var(--card-border);
     }
     .gallery-box img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s ease; }
-    .gallery-box:hover img { transform: scale(1.08); }
+    .gallery-box:hover img { transform: scale(1.06); }
     .gallery-label {
       position: absolute; bottom: 0; inset-inline: 0;
-      background: linear-gradient(transparent, rgba(0,0,0,0.85));
-      padding: 10px; font-size: 0.9rem; font-weight: bold; color: #fff; text-align: center;
+      background: linear-gradient(transparent, rgba(0,0,0,0.9));
+      padding: 12px; font-size: 0.9rem; font-weight: bold; color: #fff; text-align: center;
     }
 
     /* Cart Bar */
     .cart-bar {
       position: fixed; bottom: 15px; left: 50%; transform: translateX(-50%);
-      background: #1f181c; border: 2px solid var(--primary);
+      background: #1c1518; border: 2px solid var(--primary);
       border-radius: 40px; padding: 0.6rem 1.5rem; display: flex;
       align-items: center; justify-content: space-between; gap: 1.5rem;
       width: 90%; max-width: 480px; z-index: 1500; box-shadow: 0 8px 25px rgba(0,0,0,0.8);
     }
 
-    /* Modal */
+    /* Modal Checkout */
     .modal {
       display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.85);
       z-index: 2000; align-items: center; justify-content: center; padding: 1rem;
@@ -151,7 +152,6 @@
       border: 1px solid rgba(197, 157, 95, 0.3); border-radius: 8px; color: #fff; font-size: 0.9rem;
     }
 
-    /* Branch Box */
     .branch-card {
       background: var(--card-bg); border-radius: 12px; padding: 1.2rem;
       border-right: 4px solid var(--primary); border: 1px solid var(--card-border);
@@ -176,7 +176,7 @@
         <span class="sub">CAFFEINE & DESSERT HOUSE</span>
       </a>
       <ul class="nav-links">
-        <li><a href="#menu">قائمة المنيو</a></li>
+        <li><a href="#menu">المنيو</a></li>
         <li><a href="#gallery">معرض الصور 📸</a></li>
         <li><a href="#branches">الفروع والموقع</a></li>
       </ul>
@@ -184,10 +184,10 @@
     </nav>
   </header>
 
-  <!-- Hero -->
+  <!-- Hero Section -->
   <section class="hero">
-    <h1>ملوك الديسيرت والروقان في <span>سمنود</span> ☕✨</h1>
-    <p>تذوق أشهى أصناف الوافل، الكريب، التشيز كيك والقهوة المختصة من يونايتد كافيه.</p>
+    <h1>ملوك الديسيرت والقهوة في <span>سمنود</span> ☕✨</h1>
+    <p>أشهى أصناف الوافل، الكريب البلجيكي، السوشي كريب والقهوة المختصة المحضرة بمزاج عالي.</p>
     <a href="#menu" class="btn"><i class="fas fa-utensils"></i> استعراض كامل المنيو</a>
   </section>
 
@@ -195,76 +195,66 @@
   <section id="menu">
     <div class="section-title">
       <h2>قائمة الطعام والمشروبات كاملة</h2>
-      <p>اختر ما يعجبك واضغط إضافة للطلب</p>
+      <p>اختر الأصناف وأضفها للسلة ثم أكد طلبك بالطريقة التي تناسبك</p>
     </div>
 
     <!-- Category Tabs -->
     <div class="category-tabs">
       <button class="cat-btn active" onclick="filterMenu('all')">الكل</button>
-      <button class="cat-btn" onclick="filterMenu('waffle')">وافل ودوناتس</button>
-      <button class="cat-btn" onclick="filterMenu('crepe')">كريب حلو</button>
-      <button class="cat-btn" onclick="filterMenu('dessert')">كاسات وتشيز كيك</button>
+      <button class="cat-btn" onclick="filterMenu('waffle')">وافل وبان كيك</button>
+      <button class="cat-btn" onclick="filterMenu('crepe')">كريب وسوشي كريب</button>
+      <button class="cat-btn" onclick="filterMenu('dessert')">ديسيرت وتشيز كيك</button>
       <button class="cat-btn" onclick="filterMenu('coffee')">قهوة وإسبريسو</button>
-      <button class="cat-btn" onclick="filterMenu('drinks')">ميلك شيك وعصائر</button>
+      <button class="cat-btn" onclick="filterMenu('drinks')">شوكليت وميلك شيك وعصائر</button>
     </div>
 
-    <!-- Menu Items -->
-    <div class="menu-grid" id="menuItems">
-      <!-- الأصناف تُعرض ديناميكياً بواسطة جافا سكريبت بالأسعار الكاملة -->
-    </div>
+    <!-- Menu Grid -->
+    <div class="menu-grid" id="menuItems"></div>
   </section>
 
   <!-- Gallery Section -->
   <section id="gallery" style="border-top: 1px solid var(--card-border);">
     <div class="section-title">
-      <h2>معرض صور الحلويات والأجواء 📸</h2>
+      <h2>معرض صور المكان والحلويات 📸</h2>
       <p>لقطات حقيقية من داخل يونايتد كافيه</p>
     </div>
 
     <div class="gallery-grid">
       <div class="gallery-box">
-        <img src="https://images.unsplash.com/photo-1519676867240-f03562e64548?auto=format&fit=crop&w=600&q=80" alt="كريب يونايتد">
-        <div class="gallery-label">كريب سبيشال غرقان صوص كراميل وشوكولا</div>
+        <img src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&w=600&q=80" alt="ديكور يونايتد">
+        <div class="gallery-label">ديكورات وتصميم الحوائط التراثية الدافئة</div>
       </div>
       <div class="gallery-box">
-        <img src="https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?auto=format&fit=crop&w=600&q=80" alt="بان كيك">
-        <div class="gallery-label">ميني بان كيك بالسوس والمكسرات</div>
+        <img src="https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?auto=format&fit=crop&w=600&q=80" alt="واجهة الكافيه">
+        <div class="gallery-label">واجهة كافيه يونايتد ليلاً - قعدة روقان</div>
       </div>
       <div class="gallery-box">
-        <img src="https://images.unsplash.com/photo-1533134242443-d4fd215305ad?auto=format&fit=crop&w=600&q=80" alt="تشيز كيك">
-        <div class="gallery-label">تشيز كيك لوتس وبلوبيري مع آيس ميلك شيك</div>
+        <img src="https://images.unsplash.com/photo-1562376552-0d160a2f238d?auto=format&fit=crop&w=600&q=80" alt="وافل يونايتد">
+        <div class="gallery-label">وافل بستاشيو ونوتيلا مع شاي مخصوص</div>
       </div>
       <div class="gallery-box">
-        <img src="https://images.unsplash.com/photo-1562376552-0d160a2f238d?auto=format&fit=crop&w=600&q=80" alt="وافل">
-        <div class="gallery-label">وافل مقرمش مع بولات الآيس كريم الفاخرة</div>
-      </div>
-      <div class="gallery-box">
-        <img src="https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?auto=format&fit=crop&w=600&q=80" alt="قهوة">
-        <div class="gallery-label">ركن القهوة المختصة والإسبريسو المضبوط</div>
-      </div>
-      <div class="gallery-box">
-        <img src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&w=600&q=80" alt="المكان">
-        <div class="gallery-label">أجواء كافيه يونايتد الدافئة - قعدات مريحة</div>
+        <img src="https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?auto=format&fit=crop&w=600&q=80" alt="فنجان قهوة">
+        <div class="gallery-label">فنجان قهوة تركي مع كتاب في التراس الهادئ</div>
       </div>
     </div>
   </section>
 
-  <!-- Branches -->
+  <!-- Branches Section -->
   <section id="branches" style="border-top: 1px solid var(--card-border);">
     <div class="section-title">
-      <h2>فروع كافيه يونايتد - سمنود</h2>
-      <p>جاهزون لخدمتكم يومياً داخل الكافيه ودليفري</p>
+      <h2>فروع يونايتد كافيه - سمنود</h2>
+      <p>نسعد باستقبالكم وتوصيل طلباتكم يومياً</p>
     </div>
 
     <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem;">
       <div class="branch-card">
-        <h4>📍 فرع شارع البحر (الرئيسي)</h4>
+        <h4>📍 الفرع الأول: شارع البحر</h4>
         <p style="color: #ccc; margin-bottom: 6px;">بجوار مدرسة سمنود الثانوية بنين</p>
         <p style="color: var(--primary); font-weight: bold;">📞 01274442465</p>
       </div>
 
       <div class="branch-card">
-        <h4>📍 فرع ترعة الساحل</h4>
+        <h4>📍 الفرع الثاني: ترعة الساحل</h4>
         <p style="color: #ccc; margin-bottom: 6px;">بجوار ورشة السلاموني - محلات شركة بدر</p>
         <p style="color: var(--primary); font-weight: bold;">📞 01273543053</p>
       </div>
@@ -303,7 +293,15 @@
 
       <form id="orderForm" onsubmit="submitOrder(event)">
         <div class="input-group">
-          <label>الفرع الأقرب لك:</label>
+          <label>طريقة تأكيد وإرسال الطلب:</label>
+          <select id="sendMethod" style="border: 1.5px solid var(--primary); font-weight: bold;">
+            <option value="telegram">⚡ إرسال تلقائي مباشر (تليجرام في الخلفية)</option>
+            <option value="whatsapp">💬 إرسال عبر واتساب (فتح محادثة الفرع)</option>
+          </select>
+        </div>
+
+        <div class="input-group">
+          <label>الفرع المطلوب:</label>
           <select id="branchPhone" required>
             <option value="01274442465">فرع شارع البحر (01274442465)</option>
             <option value="01273543053">فرع ترعة الساحل (01273543053)</option>
@@ -316,8 +314,8 @@
         </div>
 
         <div class="input-group">
-          <label>رقم هاتفك:</label>
-          <input type="tel" id="custPhone" placeholder="رقم هاتفك للتواصل" required />
+          <label>رقم هاتفك للتواصل:</label>
+          <input type="tel" id="custPhone" placeholder="01xxxxxxxxx" required />
         </div>
 
         <div class="input-group">
@@ -331,16 +329,16 @@
 
         <div class="input-group" id="addressField">
           <label>العنوان بالتفصيل:</label>
-          <input type="text" id="custAddress" placeholder="المنطقة، اسم الشارع، رقم البيت" />
+          <input type="text" id="custAddress" placeholder="المنطقة، الشارع، علامة مميزة" />
         </div>
 
         <div class="input-group">
-          <label>ملاحظات على الطلب:</label>
-          <textarea id="custNotes" rows="2" placeholder="أي إضافات أو تفاصيل خاصة"></textarea>
+          <label>ملاحظات إضافية على الطلب:</label>
+          <textarea id="custNotes" rows="2" placeholder="سكر زيادة، صوص خارجي، إلخ..."></textarea>
         </div>
 
         <button type="submit" class="btn" style="width: 100%; justify-content: center; padding: 0.8rem; font-size: 1rem;">
-          <i class="fas fa-check-circle"></i> تأكيد الطلب فوراً
+          <i class="fas fa-check-circle"></i> تأكيد وإرسال الطلب
         </button>
       </form>
     </div>
@@ -351,42 +349,47 @@
   </footer>
 
   <script>
-    // قائمة المنيو الكاملة الخاصة بـ United
+    // منيو كافيه يونايتد الكامل والمطابق لبيانات الفروع
     const menuData = [
-      // وافل ودوناتس
-      { id: 1, cat: 'waffle', name: 'وافل لوتس & آيس كريم', price: 85, desc: 'وافل بلجيكي مقرمش مع زبدة لوتس أصلية وبسكوت مطحون وبولة آيس كريم' },
-      { id: 2, cat: 'waffle', name: 'وافل نوتيلا ميكس فواكه', price: 85, desc: 'وافل غرقان نوتيلا مع قطع موز وفراولة طازجة وبولة فانيليا' },
-      { id: 3, cat: 'waffle', name: 'وافل بستاشيو ملكي', price: 95, desc: 'صوص الفستق الإيطالي المميز مع مكسرات كرانشي' },
-      { id: 4, cat: 'waffle', name: 'دوناتس محشية نوتيلا وكيندر', price: 50, desc: 'دونات هشة وطازجة محشوة شوكولاتة ومرشوشة بسكر بودرة' },
+      // وافل وبان كيك
+      { id: 1, cat: 'waffle', name: 'وافل نوتيلا', price: 80, desc: 'وافل بلجيكي أصلي مع صوص نوتيلا غني وبولة فانيليا' },
+      { id: 2, cat: 'waffle', name: 'وافل لوتس', price: 85, desc: 'زبدة لوتس أصلية مع بسكويت لوتس مطحون وبولة آيس كريم' },
+      { id: 3, cat: 'waffle', name: 'وافل بستاشيو', price: 95, desc: 'صوص فستق طبيعي مميز مع مكسرات كرانشي' },
+      { id: 4, cat: 'waffle', name: 'وافل كندر ومارشميلو', price: 90, desc: 'قطع شوكولاتة كندر ومارشميلو ذائب مع صوص حليب' },
+      { id: 5, cat: 'waffle', name: 'وافل مكس شوكليت (3 صوصات)', price: 90, desc: 'مزيج النوتيلا، الشوكولاتة البيضاء، واللوتس' },
+      { id: 6, cat: 'waffle', name: 'ميجا وافل (4 قطع عائلي)', price: 210, desc: 'طبق عائلي مشكل بجميع أنواع الصوصات والإضافات والآيس كريم' },
+      { id: 7, cat: 'waffle', name: 'ميني بان كيك (10 قطع)', price: 70, desc: 'قطع ميني بان كيك ساخنة مع صوصات النوتيلا والكراميل' },
 
-      // كريب
-      { id: 5, cat: 'crepe', name: 'كريب كلاسيك نوتيلا وموز', price: 75, desc: 'رول كريب طري محشو نوتيلا وشرائح موز مع صوص شوكولا' },
-      { id: 6, cat: 'crepe', name: 'كريب فستق وشوكولاتة بيضاء', price: 90, desc: 'مزيج البستاشيو الغني مع صوص الشوكولاتة البيضاء الساخن' },
-      { id: 7, cat: 'crepe', name: 'كريب مكس كندر ومارشميلو', price: 85, desc: 'محشو قطع شوكولاتة كيندر ومارشميلو ذائب' },
+      // كريب وسوشي كريب
+      { id: 8, cat: 'crepe', name: 'كريب كلاسيك نوتيلا', price: 75, desc: 'رول كريب طري محشو بالنوتيلا مع شرائح الموز' },
+      { id: 9, cat: 'crepe', name: 'كريب لوتس & كيندر', price: 85, desc: 'كريب محشو بصوص اللوتس مع أصابع شوكولاتة كيندر' },
+      { id: 10, cat: 'crepe', name: 'سوشي كريب نوتيلا رول', price: 85, desc: 'رولات كريب مقطعة على طريقة السوشي مغطاة بالشوكولاتة' },
+      { id: 11, cat: 'crepe', name: 'سوشي كريب بستاشيو ملكي', price: 95, desc: 'رولات سوشي كريب محشوة ومغطاة بصوص الفستق الإيطالي' },
 
       // ديسيرت وتشيز كيك
-      { id: 8, cat: 'dessert', name: 'كاسات سنيكرز كرانشي', price: 75, desc: 'طبقات كيك الشوكولا وصوص الكراميل مع قطع سنيكرز وفول سوداني' },
-      { id: 9, cat: 'dessert', name: 'تشيز كيك بلوبيري نيويورك', price: 65, desc: 'تشيز كيك غني مغطى بصوص التوت البري الفاخر' },
-      { id: 10, cat: 'dessert', name: 'تشيز كيك لوتس كرانش', price: 70, desc: 'طبقات الجبن الكريمي مع زبدة وبسكويت اللوتس الأصلي' },
-      { id: 11, cat: 'dessert', name: 'ميني بان كيك 12 قطعة سوسات', price: 70, desc: 'قطع ميني بان كيك مغطاة بشوكولاتة حليب ووايت صوص' },
+      { id: 12, cat: 'dessert', name: 'كاسات ديسيرت سنيكرز', price: 75, desc: 'طبقات كيك الشوكولا وصوص الكراميل مع قطع سنيكرز وفول سوداني' },
+      { id: 13, cat: 'dessert', name: 'كاسات ديسيرت كيندر وبراونيز', price: 75, desc: 'طبقات كيك براونيز غني مع كريمة وكيندر صوص' },
+      { id: 14, cat: 'dessert', name: 'تشيز كيك بلوبيري نيويورك', price: 65, desc: 'تشيز كيك مخبوز مع صوص التوت البري الفاخر' },
+      { id: 15, cat: 'dessert', name: 'تشيز كيك لوتس كرانش', price: 70, desc: 'تشيز كيك مع زبدة وبسكويت اللوتس المقرمش' },
 
       // قهوة وإسبريسو
-      { id: 12, cat: 'coffee', name: 'سبانش لاتيه (بارد / ساخن)', price: 55, desc: 'إسبريسو دبل شوت مع حليب مكثف محلى بمذاق معتدل' },
-      { id: 13, cat: 'coffee', name: 'كراميل ماكياتو', price: 55, desc: 'إسبريسو مع حليب مبخر وصوص كراميل دافئ' },
-      { id: 14, cat: 'coffee', name: 'قهوة تركي مخصوص (سادة / محوج)', price: 30, desc: 'بن تركي فاخر محضر على الرمالة' },
-      { id: 15, cat: 'coffee', name: 'إسبريسو دوبل (Double Espresso)', price: 35, desc: 'شوت إسبريسو نقي وقوي لضبط المزاج' },
-      { id: 16, cat: 'coffee', name: 'كافيه موكا شوكولاتة', price: 50, desc: 'إسبريسو ممزوج بشوكولاتة غنية وكريمة مخفوقة' },
+      { id: 16, cat: 'coffee', name: 'إسبريسو سينجل / دبل', price: 35, desc: 'شوت إسبريسو نقي ومضبوط بالكريمة الغنية' },
+      { id: 17, cat: 'coffee', name: 'قهوة تركي مخصوص (سادة / محوج)', price: 30, desc: 'بن تركي فاخر محضر برغوة مظبوطة على الرمالة' },
+      { id: 18, cat: 'coffee', name: 'قهوة فرنساوي بالحليب', price: 35, desc: 'مزيج القهوة المحوجة بالحليب الساخن المبخر' },
+      { id: 19, cat: 'coffee', name: 'سبانش لاتيه (بارد / ساخن)', price: 55, desc: 'إسبريسو دبل مع حليب مكثف محلى بمذاق متوازن' },
+      { id: 20, cat: 'coffee', name: 'كراميل ماكياتو', price: 55, desc: 'إسبريسو مع حليب مكثف ومغطى بصوص كراميل ناعم' },
+      { id: 21, cat: 'coffee', name: 'كابتشينو كلاسيك', price: 50, desc: 'إسبريسو إيطالي مع رغوة حليب كثيفة ورشة كاكاو' },
 
-      // مشروبات وميلك شيك
-      { id: 17, cat: 'drinks', name: 'ميلك شيك نوتيلا وبراونيز', price: 65, desc: 'ميلك شيك آيس كريم شوكولا مع قطع كيك براونيز' },
-      { id: 18, cat: 'drinks', name: 'ميلك شيك لوتس فانيلا', price: 65, desc: 'آيس كريم فانيليا مخلوط بصوص لوتس وبسكويت مقرمش' },
-      { id: 19, cat: 'drinks', name: 'موهيتو بلوبيري / باشن فروت', price: 45, desc: 'صودا منعشة مع صوص الفاكهة والنعناع الطازج والليمون' },
-      { id: 20, cat: 'drinks', name: 'عصير فريش (مانجو / فراولة / برتقال)', price: 40, desc: 'عصائر فواكه طبيعية طازجة 100%' }
+      // شوكليت وميلك شيك وعصائر
+      { id: 22, cat: 'drinks', name: 'هوت شوكليت يونايتد', price: 45, desc: 'شوكولاتة ساخنة غنية مع كريمة مخفوقة ومارشميلو' },
+      { id: 23, cat: 'drinks', name: 'ميلك شيك نوتيلا', price: 65, desc: 'آيس كريم فاخر مخلوط بالنوتيلا وصوص شوكولا' },
+      { id: 24, cat: 'drinks', name: 'ميلك شيك لوتس', price: 65, desc: 'آيس كريم فانيليا مع زبدة وبسكويت لوتس مطحون' },
+      { id: 25, cat: 'drinks', name: 'موهيتو بلوبيري / باشن فروت', price: 45, desc: 'صودا منعشة مع صوص الفاكهة والنعناع والليمون' },
+      { id: 26, cat: 'drinks', name: 'سموذي مانجو / فراولة فريش', price: 45, desc: 'عصير مثلج طبيعي 100% غني ومثلج' }
     ];
 
     let cart = [];
 
-    // عرض الأصناف
     function renderMenu(items) {
       const container = document.getElementById('menuItems');
       container.innerHTML = items.map(item => `
@@ -405,7 +408,6 @@
       `).join('');
     }
 
-    // فلترة الأقسام
     function filterMenu(cat) {
       document.querySelectorAll('.cat-btn').forEach(b => b.classList.remove('active'));
       event.target.classList.add('active');
@@ -417,7 +419,6 @@
       }
     }
 
-    // إدارة السلة
     function addToCart(id) {
       const item = menuData.find(i => i.id === id);
       const inCart = cart.find(i => i.id === id);
@@ -491,10 +492,11 @@
       document.getElementById('addressField').style.display = type.includes('توصيل') ? 'block' : 'none';
     }
 
-    // تأكيد الطلب
-    function submitOrder(e) {
+    // إرسال الطلب (تليجرام فوري أو واتساب)
+    async function submitOrder(e) {
       e.preventDefault();
 
+      const method = document.getElementById('sendMethod').value;
       const branch = document.getElementById('branchPhone').value;
       const name = document.getElementById('custName').value;
       const phone = document.getElementById('custPhone').value;
@@ -505,31 +507,65 @@
 
       let itemsTxt = "";
       cart.forEach((i, idx) => {
-        itemsTxt += `${idx + 1}. *${i.name}* (عدد ${i.qty}) -> ${i.price * i.qty} ج.م%0A`;
+        itemsTxt += `${idx + 1}. *${i.name}* (عدد ${i.qty}) -> ${i.price * i.qty} ج.م\n`;
       });
 
-      const msg = 
-`☕ *طلب جديد - يونايتد كافيه* ☕%0A` +
-`-------------------------%0A` +
-`👤 *الاسم:* ${name}%0A` +
-`📱 *الموبايل:* ${phone}%0A` +
-`📌 *النوع:* ${type}%0A` +
-`📍 *العنوان:* ${address}%0A` +
-`📝 *ملاحظات:* ${notes}%0A` +
-`-------------------------%0A` +
-`🛒 *الأصناف:*%0A${itemsTxt}` +
-`-------------------------%0A` +
-`💰 *الإجمالي:* ${total} ج.م`;
+      const msgText = 
+`☕ *طلب جديد - يونايتد كافيه* ☕
+-------------------------
+👤 *الاسم:* ${name}
+📱 *الهاتف:* ${phone}
+📌 *الاستلام:* ${type}
+📍 *العنوان:* ${address}
+📝 *ملاحظات:* ${notes}
+-------------------------
+🛒 *الأصناف المطلوبة:*
+${itemsTxt}
+-------------------------
+💰 *الإجمالي:* ${total} ج.م`;
 
-      // إشعار فوري وتجهيز الرسالة
-      alert("تم تسجيل وتأكيد طلبك بنجاح! سيتم الآن توجيه الطلب إلى رقم واتساب الفرع لتأكيد التجهيز فوراً.");
-      
-      const waUrl = `https://wa.me/20${branch.substring(1)}?text=${msg}`;
+      // 1. خيار الإرسال التلقائي المباشر عبر تليجرام في الخلفية
+      if (method === 'telegram') {
+        const TG_TOKEN = "8978719349:AAFgR0Mlux8tRk7q6QWmebWdXUx2d-dVNq8";
+        const TG_CHAT_ID = "5838623474";
+
+        try {
+          const res = await fetch(`https://api.telegram.org/bot${TG_TOKEN}/sendMessage`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ 
+              chat_id: TG_CHAT_ID, 
+              text: msgText,
+              parse_mode: 'Markdown'
+            })
+          });
+
+          if (res.ok) {
+            alert("🎉 تم تأكيد طلبك بنجاح! تم استلام الأوردر وسيتم تجهيزه فوراً.");
+            cart = [];
+            updateCart();
+            closeModal();
+          } else {
+            alert("حدث خطأ أثناء الإرسال المباشر، جاري تحويلك للواتساب...");
+            sendWhatsApp(branch, msgText);
+          }
+        } catch (err) {
+          sendWhatsApp(branch, msgText);
+        }
+      } 
+      // 2. خيار الواتساب المباشر
+      else {
+        sendWhatsApp(branch, msgText);
+      }
+    }
+
+    function sendWhatsApp(branch, text) {
+      const waUrl = `https://wa.me/20${branch.substring(1)}?text=${encodeURIComponent(text)}`;
       window.location.href = waUrl;
     }
 
-    // تشغيل القائمة عند الفتح
+    // تشغيل القائمة تلقائياً عند فتح الصفحة
     renderMenu(menuData);
   </script>
 </body>
-  </html>
+</html>
